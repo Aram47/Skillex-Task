@@ -1,4 +1,4 @@
-import { getConnection } from "../config/db.conf.js";
+import { getConnection } from "../app/config/db.conf.js";
 
 export default class SqlRepository {
 	constructor() {

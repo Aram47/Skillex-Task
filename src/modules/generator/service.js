@@ -1,5 +1,5 @@
-import SqlRepository from '../../app/repository/sql.repository.js';
-import generateValidCombinations from '../../app/service/comb.generator.js';
+import SqlRepository from '../../repository/sql.repository.js';
+import generateValidCombinations from '../../common/services/comb.generator.js';
 
 export default class GeneratorService {
 	constructor() {
