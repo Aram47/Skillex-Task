@@ -1,0 +1,30 @@
+CREATE DATABASE IF NOT EXISTS mydatabase;
+CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'rootpassword';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+USE mydatabase;
+
+CREATE TABLE IF NOT EXISTS items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS combinations (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  combination_id INT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS combination_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  combination_id INT NOT NULL,
+  item_id INT NOT NULL,
+  FOREIGN KEY (combination_id) REFERENCES combinations(id),
+  FOREIGN KEY (item_id) REFERENCES items(id)
+);
+
+CREATE TABLE IF NOT EXISTS responses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  combination_id INT NOT NULL,
+  response_json JSON NOT NULL
+);
